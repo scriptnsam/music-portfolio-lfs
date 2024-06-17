@@ -68,6 +68,8 @@
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --eerie-white-1: hsl(0, 0%, 100%);
+  --smoky-white: hsl(0, 0%, 92%);
 
   /**
    * typography
@@ -155,7 +157,8 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+/* body { background: var(--smoky-black); } */
+body { background: var(--smoky-white); }
 
 
 
