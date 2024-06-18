@@ -17,6 +17,11 @@
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
+  <!-- 
+    - audio css
+  -->
+  <link rel="stylesheet" href="./assets/css/audio.css">
+
   <!--
     - google font link
   -->
@@ -42,13 +47,13 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src="./assets/covers/cover3.jpg" alt="Richard hanrick" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
+          <h1 class="name" title="Ronke Aluko">Ronke Aluko</h1>
 
-          <p class="title">Web developer</p>
+          <p class="title">Artist</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -174,7 +179,7 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button class="navbar-link" data-nav-link>Music</button>
           </li>
 
           <li class="navbar-item">
@@ -188,6 +193,7 @@
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Contact</button>
           </li>
+
 
         </ul>
 
@@ -223,7 +229,7 @@
           - service
         -->
 
-        <section class="service">
+        <!-- <section class="service">
 
           <h3 class="h3 service-title">What i'm doing</h3>
 
@@ -296,14 +302,14 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
 
         <!--
           - testimonials
         -->
 
-        <section class="testimonials">
+        <!-- <section class="testimonials">
 
           <h3 class="h3 testimonials-title">Testimonials</h3>
 
@@ -399,7 +405,7 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
 
         <!--
@@ -451,7 +457,7 @@
           - clients
         -->
 
-        <section class="clients">
+        <!-- <section class="clients">
 
           <h3 class="h3 clients-title">Clients</h3>
 
@@ -495,7 +501,7 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
       </article>
 
@@ -507,13 +513,13 @@
         - #RESUME
       -->
 
-      <article class="resume" data-page="resume">
+      <article class="resume" data-page="music">
 
         <header>
-          <h2 class="h2 article-title">Resume</h2>
+          <h2 class="h2 article-title">Music</h2>
         </header>
 
-        <section class="timeline">
+        <!-- <section class="timeline">
 
           <div class="title-wrapper">
             <div class="icon-box">
@@ -626,9 +632,25 @@
 
           </ol>
 
-        </section>
+        </section> -->
 
         <section class="skill">
+        <h3 class="h3 skills-title">My Music</h3>
+        
+          <ul class="skill-list content-card" style="margin-top: 5px;" >
+    
+              <div class="song-list" id="song-list">
+                <!-- ###Song list tab -->
+                <div class="loading-sign" id="loading-sign">Loading...</div>
+                            
+              </div>
+    
+
+
+          </ul>
+        </section>
+
+        <!-- <section class="skill">
 
           <h3 class="h3 skills-title">My skills</h3>
 
@@ -688,7 +710,7 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
       </article>
 
@@ -1171,6 +1193,38 @@
 
       </article>
 
+      <!-- 
+        - Music Page Player Page
+      -->
+        <article class="music" data-page="music-detail">
+          <header>
+            <h2 class="h2 article-title" id="music-song-title">No title</h2>
+          </header>
+           <div class="audio-player">
+                <audio id="audio" controls>
+                    <source src="" type="audio/mpeg" id="music-song-uri">
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="controls">
+                    <button id="playPauseBtn">Play</button>
+                    <input type="range" id="seekSlider" max="100" value="0">
+                    <div class="time">
+                        <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                    <button id="muteBtn">Mute</button>
+                    <input type="range" id="volumeSlider" max="100" value="100">
+                </div>
+            </div>
+
+          <div class="music-lyrics">
+            <!-- <h3 class="h3 skills-title">My Music</h3> -->
+
+            <section id="music-song-lyrics" class="lyrics">>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis sapiente inventore possimus natus minus. Et amet laborum quam, doloremque incidunt inventore eius tempora rem nam iusto cumque. Consequatur, delectus fugiat!
+            </section
+          </div>
+        </article>
+
     </div>
 
   </main>
@@ -1184,6 +1238,11 @@
     - custom js link
   -->
   <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - audio player script
+  -->
+  <script src="./assets/js/audio.js"></script>
 
   <!--
     - ionicon link

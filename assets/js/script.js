@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
@@ -157,3 +156,84 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// open the music section
+var jsonSong = []
+
+function musicDetailOpen() {
+  const songList = document.querySelectorAll("[data-song-list]");
+  for (let i = 0; i < songList.length; i++) {
+    songList[i].addEventListener("click", function () {
+
+      // console.log(i)
+      // do other things here
+      for (let j = 0; j < jsonSong.length; j++) {
+        if (i === j) {
+          // console.log(jsonSong[j])
+          const songTitleContainer = document.getElementById("music-song-title");
+          const songUriContainer = document.getElementById("music-song-uri");
+          const songLyricsContainer = document.getElementById("music-song-lyrics");
+          const audioElement = document.getElementById("audio");
+
+
+          songTitleContainer.innerHTML = jsonSong[j].title;
+          songUriContainer.src = jsonSong[j].uri;
+          songLyricsContainer.innerHTML = jsonSong[j].lyrics;
+          audioElement.load(); //loads the new uri into the audio player
+
+          for (let i = 0; i < pages.length; i++) {
+            if (pages[i].dataset.page === "music-detail") {
+              pages[i].classList.add("active");
+              window.scrollTo(0, 0);
+            } else {
+              pages[i].classList.remove("active");
+            }
+          }
+
+        }
+      }
+    });
+  }
+}
+
+setTimeout(() => {
+  musicDetailOpen()
+}, 5000)
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch('./assets/js/songlist.json')
+    .then(response => response.json())
+    .then(data => {
+
+      jsonSong = data;
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const songListContainer = document.getElementById("song-list");
+  const loadngSign = document.getElementById("loading-sign");
+  setTimeout(() => {
+    if (jsonSong.length !== 0) {
+      jsonSong.forEach((song) => {
+        loadngSign.remove()
+        songListContainer.innerHTML += `
+                <div class="album-section" data-song-list>
+                  <img src="${song.image}" alt="${song.title}" class="album-cover">
+                  <div class="song-info">
+                      <h1 class="song-title">${song.title}</h1>
+                      <h3 class="song-artist">${song.artist}</h3>
+                  </div>
+                </div>
+        `
+      });
+    } else {
+      loadngSign.innerHTML = `
+        <h1 class="loading-sign">No music available</h1>
+      `
+    }
+  }, 3000)
+})

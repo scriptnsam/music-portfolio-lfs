@@ -1224,6 +1224,21 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
+.lyrics{
+  padding: 3px;
+  color: var(--light-gray);
+}
+
+.music-lyrics{
+  margin-top: 7px;
+  padding: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.loading-sign{
+  color: var(--eerie-white-1);
+}
 
 
 
