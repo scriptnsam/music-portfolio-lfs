@@ -1,0 +1,18 @@
+[
+    {
+        "id":0,
+        "title":"Pada wa sile",
+        "artist":"Ronke Aluko",
+        "uri":"./assets/musics/Pada%20Wa%20Sile.mp3",
+        "lyrics":"  <h2>PADA WA SILE</h2> <p>Verse:</p> <p>O Sinner o hear the words of the Lord</p><p>O wanderer hear the voice of your helper</p> <p>Jesus is waiting give you the hope of eternal life</p><p>Just like a prodigal son, please come home</p><br><p>Chorus: </p><p>Elese gbo ipe pada wa sile</p><p>Asako gbo ipe olode</p><p>Jesu duro lenu ilekun ofe woke </p><p>Asako gbo ipe mabo</p><br><p>Verse:</p><p>Aiye yi ko nipe dopin Oree mi</p><p>Laisi Jesu iya aiyeraye ni</p><p>Jesu duro lenu ilekun ofe wole </p><p>Asako gbo ipe ma bo</p><br><p>Chorus: </p><p>Elese gbo ipe pada wa sile</p><p>Asako gbo ipe olode</p><p>Jesu duro lenu ilekun ofe woke </p><p>Asako gbo ipe mabo</p><br><p>Vamp:</p><p>Pada pada pada</p><p>Pada wa sile</p><p>Pada pada pada</p><p>Pada wa sile</p>",
+        "image":"./assets/covers/cover1.jpg"
+    },
+    {
+        "id":1,
+        "title":"Gbemisoke",
+        "artist":"Ronke Aluko",
+        "uri":"./assets/musics/Ronke-Aluko-Gbemisoke_085957.mp3",
+        "lyrics":"<h2>Gbemisoke</h2>",
+        "image":"./assets/covers/cover2.jpg"
+    }
+]
