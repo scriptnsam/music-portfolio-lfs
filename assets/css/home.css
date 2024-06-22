@@ -1,0 +1,72 @@
+#home-hero {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+p.hero {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.book-now {
+    background-color: var(--jet);
+    color: var(--vegas-gold);
+    font-weight: 600;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: auto;
+}
+
+.book-now:hover {
+    color: var(--light-gray-70);
+}
+
+/* Custom styles for the home-carousel section */
+#home-carousel {
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-carousel .carousel-inner .carousel-item {
+    height: 800px; /* Set your desired height */
+}
+
+.custom-carousel .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%; /* Ensures the image fills the container */
+    object-fit: cover; /* Ensures the image covers the container without stretching */
+    border-radius: 10px;
+}
+
+/* Additional styles for carousel captions */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    bottom: 20px; /* Adjust as needed */
+    font-size: 14px; /* Adjust font size if needed */
+}
+
+@media (max-width: 768px){
+    .custom-carousel .carousel-inner .carousel-item {
+        height: 400px; /* Set your desired height */
+    }
+}

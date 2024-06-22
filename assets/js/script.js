@@ -237,3 +237,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 3000)
 })
+
+
+const photos = [];
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch('./assets/js/photos.json')
+    .then(response => response.json())
+    .then(data => {
+      photos.push(...data)
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+  const photoContainer = document.getElementById("gallery");
+  const photosLoadingSign = document.getElementById("photos-loading-sign");
+  setTimeout(() => {
+    if (photos.length !== 0) {
+      photos.forEach((photo, i) => {
+        photosLoadingSign.remove()
+        photoContainer.innerHTML += `
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="gallery-item">
+                        <img src="${photo.uri}" class="img-fluid" alt="Gallery Image ${i + 1}">
+                    </div>
+                </div>
+        `
+      });
+    } else {
+      photosLoadingSign.innerText = `No photos available`
+    }
+  }, 3000)
+})
+
+
+const videos = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch('./assets/js/videos.json')
+    .then(response => response.json())
+    .then(data => {
+      videos.push(...data)
+      console.log(videos)
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+  const videoContainer = document.getElementById("gallery");
+  const videosLoadingSign = document.getElementById("photos-loading-sign");
+  setTimeout(() => {
+    if (videos.length !== 0) {
+      videos.forEach((video, i) => {
+        videosLoadingSign.remove()
+        videoContainer.innerHTML += `
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="gallery-item">
+                <iframe width="100%" height="315" src="${video.uri}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        `
+      })
+    } else {
+      videosLoadingSign.innerText = `No videos available`
+    }
+  }, 3000)
+})

@@ -1240,6 +1240,12 @@ textarea.form-input::-webkit-resizer { display: none; }
   color: var(--eerie-white-1);
 }
 
+.photos-loading-sign{
+  color: var(--smoky-black);
+  margin: auto;
+  font-weight: 700;
+}
+
 
 
 
