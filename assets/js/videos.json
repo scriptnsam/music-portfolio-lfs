@@ -1,34 +1,30 @@
 [
     {
         "id":0,
-        "uri":"../assets/videos/Abrsm Grade1  2019.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200386/Abrsm_Grade1_2019_h7xygz.mp4"
     },
     {
         "id":1,
-        "uri":"../assets/videos/at EIV Jazz concert January 2019.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200387/one_of_our_ABRSM_exam_nominee_2018_c1mpg3.mp4"
     },
     {
         "id":2,
-        "uri":"../assets/videos/hot praises with the electric xylophone at RCCG powerlink Lekki phase 1 Lagos.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200384/hot_praises_with_the_electric_xylophone_at_RCCG_powerlink_Lekki_phase_1_Lagos_oioqa8.mp4"
     },
     {
         "id":3,
-        "uri":"../assets/videos/Medley on xylophone.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200386/VID_20190917_172030_lifjth.mp4"
     },
     {
         "id":4,
-        "uri":"../assets/videos/VID_20190917_172030.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200389/VID_35730105_201049_585_uojz6h.mp4"
     },
     {
         "id":5,
-        "uri":"../assets/videos/VID_35730105_201049_585.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200392/Video_animation_of_Gbemisoke_wx4doo.mp4"
     },
     {
         "id":6,
-        "uri":"../assets/videos/VID_35831219_225626_300.mp4"
-    },
-    {
-        "id":7,
-        "uri":"../assets/videos/one of our ABRSM exam nominee 2018.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200387/short_sunday_rehearsal_on_drums_xuerkc.mp4"
     }
 ]
