@@ -1052,6 +1052,7 @@ main {
   box-shadow: var(--shadow-4);
   border-radius: 16px;
   z-index: 1;
+  color: var(--smoky-white);
 }
 
 .blog-post-item > a::before {
@@ -1061,6 +1062,7 @@ main {
   border-radius: inherit;
   background: var(--eerie-black-1);
   z-index: -1;
+  color: var(--smoky-white);
 }
 
 .blog-banner-box {
@@ -1107,6 +1109,10 @@ main {
   line-height: 1.3;
   transition: var(--transition-1);
 }
+
+.blog-post-item > a .blog-item-title { color: var(--orange-yellow-crayola); }
+
+.blog-post-item > a .blog-text { color: var(--smoky-white); }
 
 .blog-post-item > a:hover .blog-item-title { color: var(--orange-yellow-crayola); }
 
