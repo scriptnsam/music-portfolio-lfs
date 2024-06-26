@@ -38,6 +38,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="./assets/js/blogs.js"></script>
 </head>
 
 <body>
@@ -510,35 +512,11 @@
 
         <section class="blog-posts">
 
-          <ul class="blog-posts-list">
+          <div style="margin: auto;font-weight: 700;font-size: larger;" id="blog-loading">Loading...</div>
+          <ul class="blog-posts-list" id="blog-list">
 
-            <li class="blog-post-item">
-              <a href="#">
+            <!-- blog-content will go here -->
 
-                <figure class="blog-banner-box">
-                  <img src="https://res.cloudinary.com/dltvs77fa/image/upload/v1719200388/1576075999982_cer6gv.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">June 24, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Medley on Xylophone</h3>
-
-                  <p class="blog-text">
-                    Get ready to be blown away by Ronke Aluko's incredible Gospel Medley performed on the digital xylophone! Filmed right here in Lagos' largest studio, this video is a testament to the city's vibrant music scene. Ronke's creativity knows no bounds as she seamlessly weaves together classic gosp...
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
           </ul>
 
         </section>
@@ -932,11 +910,35 @@
           <div class="music-lyrics">
             <h3 class="h3 skills-title">Lyrics</h3>
 
-            <section id="music-song-lyrics" class="lyrics">>
+            <section id="music-song-lyrics" class="lyrics">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis sapiente inventore possimus natus minus. Et amet laborum quam, doloremque incidunt inventore eius tempora rem nam iusto cumque. Consequatur, delectus fugiat!
             </section
           </div>
         </article>
+
+
+      <article class="blog" data-page="blog-detail">
+        <header>
+          <h2 class="h2 article-title" id="blog-title">No title</h2>
+        </header>
+       
+        <figure class="blog-banner-box">
+          <img id="blog-img" loading="lazy">
+        </figure>
+
+        <div class="blog-content">
+          <hr style="color: #3a3939;">
+
+            <p class="blog-category" id="blog-category"></p>
+
+            <span class="dot"></span>
+
+            <time id="blog-date"></time>
+            <br>
+            
+            <p class="blog-text" id="blog-text"></p>
+        </div>
+      </article>
 
 
          <!--
@@ -1172,7 +1174,7 @@
           </ul>
 
         </section>
-
+        
       </article>
 
     </div>

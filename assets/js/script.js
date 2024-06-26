@@ -197,10 +197,54 @@ function musicDetailOpen() {
   }
 }
 
+
+// open the blog details section
+
+// the blogs variable is in the blogs.js file
+function blogDetailsOpen() {
+  const blogList = document.querySelectorAll("[data-blog-item]");
+  for (let i = 0; i < blogList.length; i++) {
+    // console.log(blogList[i], i)
+    blogList[i].addEventListener("click", function () {
+      for (let j = 0; j < blogs.length; j++) {
+        if (i === j) {
+          // console.log(blogs[j])
+          const focusedBlog = blogs[j]
+          const blogTitleContainer = document.getElementById("blog-title")
+          const blogImg = document.getElementById("blog-img")
+          const blogText = document.getElementById("blog-text")
+          const blogCategory = document.getElementById("blog-category")
+          const blogDate = document.getElementById("blog-date")
+
+          blogTitleContainer.innerText = focusedBlog.title
+          blogImg.src = focusedBlog.image
+          blogImg.alt = focusedBlog.title
+          blogText.innerText = focusedBlog.content
+          blogCategory.innerText = focusedBlog.category
+          blogDate.innerText = focusedBlog.date
+          blogDate.datetime = new Date(focusedBlog.date)
+
+
+          for (let i = 0; i < pages.length; i++) {
+            if (pages[i].dataset.page === "blog-detail") {
+              pages[i].classList.add("active");
+              window.scrollTo(0, 0);
+            } else {
+              pages[i].classList.remove("active");
+            }
+          }
+
+        }
+
+      }
+    })
+  }
+}
+
 setTimeout(() => {
   musicDetailOpen()
+  blogDetailsOpen()
 }, 5000)
-
 
 document.addEventListener("DOMContentLoaded", function () {
   fetch('./assets/js/songlist.json')
@@ -280,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       videos.push(...data)
-      console.log(videos)
+      // console.log(videos)
     })
     .catch(error => console.error('Error fetching JSON:', error));
 })
@@ -302,6 +346,49 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     } else {
       videosLoadingSign.innerText = `No videos available`
+    }
+  }, 3000)
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+  const blogContainer = document.getElementById("blog-list");
+  const blogLoadingSign = document.getElementById("blog-loading")
+  setTimeout(() => {
+    blogLoadingSign.remove()
+    if (blogs.length !== 0) {
+      blogs.forEach((blog, i) => {
+        blogContainer.innerHTML += `
+        <li class="blog-post-item" data-blog-item>
+              <a href="#">
+
+                <figure class="blog-banner-box">
+                  <img src="${blog.image}" alt="${blog.title}" loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">${blog.category}</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="${new Date(blog.date)}">${blog.date}</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">${blog.title}</h3>
+
+                  <p class="blog-text">
+                    ${blog.contentPreview}
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+        `
+      })
+    } else {
+      blogContainer.innerHTML = `<div style="margin:auto;font-weight:600;">No blogs available</div>`;
     }
   }, 3000)
 })
