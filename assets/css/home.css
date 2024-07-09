@@ -122,6 +122,23 @@ p.hero {
     filter: saturate(1);
 }
 
+.gallery-item{
+    border: 1px solid var(--vegas-gold);
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gallery-item > img{
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-item > iframe{
+    width: 100%;
+    height: 100%;
+}
+
 @media (max-width: 768px){
     .custom-carousel .carousel-inner .carousel-item {
         height: 400px; /* Set your desired height */
