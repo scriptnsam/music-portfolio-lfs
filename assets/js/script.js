@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       photos.forEach((photo, i) => {
         photosLoadingSign.remove()
         photoContainer.innerHTML += `
-               <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+               <div class="col-lg-4 col-md-6 col-sm-12 mb-4" onclick="popUpWindow(event)">
                     <div class="gallery-item">
                         <img src="${photo.uri}" class="img-fluid" alt="Gallery Image ${i + 1}">
                     </div>
@@ -392,3 +392,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 3000)
 })
+
+
+const popUpWindow = (e) => {
+  const img = e.target.src;
+  const imgAlt = e.target.alt;
+  const popUpWindow = document.getElementById('pop_up_window');
+
+  openPopup()
+
+  const imgContainer = popUpWindow.children[1].children[0];
+  imgContainer.alt = imgAlt
+  imgContainer.src = img
+
+
+}
