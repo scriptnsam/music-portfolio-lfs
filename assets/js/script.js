@@ -407,3 +407,40 @@ const popUpWindow = (e) => {
 
 
 }
+
+
+
+// functionality for switching to the contact page after clicking the "Book Now" button
+const bookNowBtn = document.querySelectorAll('[data-book-now]');
+for (let i = 0; i < bookNowBtn.length; i++) {
+  const eachBtn = bookNowBtn[i];
+
+  eachBtn.addEventListener('click', () => {
+
+    // Navigation loop
+    for (let k = 0; k < navigationLinks.length; k++) {
+      const eachNav = navigationLinks[k];
+      if (eachNav.innerText.toLowerCase() === "contact") {
+        eachNav.classList.add('active')
+      } else {
+        eachNav.classList.remove('active')
+      }
+
+    }
+
+    // Pages loop
+    for (let j = 0; j < pages.length; j++) {
+      const eachPage = pages[j];
+      if (eachPage.dataset.page === "contact") {
+        eachPage.classList.add('active')
+        window.scrollTo(0, 0);
+      } else {
+        eachPage.classList.remove('active')
+      }
+
+    }
+
+  })
+
+
+}

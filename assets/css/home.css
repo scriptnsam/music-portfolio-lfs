@@ -45,11 +45,29 @@ p.hero {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+#home-carouselqqq {
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .custom-carousel .carousel-inner .carousel-item {
-    height: 800px; /* Set your desired height */
+    height: 700px; /* Set your desired height */
+}
+.custom-carousel .carousel-inner .carousel-item1 {
+    height: 500px; /* Set your desired height */
 }
 
 .custom-carousel .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 100%; /* Ensures the image fills the container */
+    object-fit: cover; /* Ensures the image covers the container without stretching */
+    border-radius: 10px;
+}
+
+.custom-carousel .carousel-inner .carousel-item iframe {
     width: 100%;
     height: 100%; /* Ensures the image fills the container */
     object-fit: cover; /* Ensures the image covers the container without stretching */
@@ -116,6 +134,7 @@ p.hero {
     width: 100%;
     height: 100%;
     filter: saturate(2);
+    object-fit: contain;
 }
 
 .popUp_Img > img:hover{
@@ -132,6 +151,7 @@ p.hero {
 .gallery-item > img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .gallery-item > iframe{
@@ -142,6 +162,9 @@ p.hero {
 @media (max-width: 768px){
     .custom-carousel .carousel-inner .carousel-item {
         height: 400px; /* Set your desired height */
+    }
+    .custom-carousel .carousel-inner .carousel-item1 {
+        height: 300px; /* Set your desired height */
     }
     .pop_up_window{
         width: 90%;
