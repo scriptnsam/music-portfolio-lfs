@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $messageReceived = trim($_POST["message"]);
 
     if (empty($full_name) || empty($email) || empty($messageReceived)) {
-        echo 'Please complete all fields!';
+        echo json_encode(["success"=>false, "errorM"=>"Please complete all fields!"]);
         exit;
     }
-
+    
     // Validate email address
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo 'Invalid email address!';
+        echo json_encode(["success"=>false, "errorM"=>"Invalid email address!"]);
         exit;
     }
 
@@ -89,8 +89,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$mail->send();
 		echo json_encode(["success" => true]);
+        exit;
 	} catch (Exception $e) {
 		// echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        echo json_encode(["success" => false,"error"=>$mail->ErrorInfo]);
+        echo json_encode(["success" => false,"errorM"=>$mail->ErrorInfo]);
+        exit;
 	}
 }

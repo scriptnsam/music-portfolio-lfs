@@ -22,7 +22,7 @@ form.addEventListener('submit', (e) => {
                 alert('Message sent successfully');
                 form.reset();
             } else {
-                alert('Message not sent');
+                alert(data.errorM);
             }
         })
         .catch(err => {
