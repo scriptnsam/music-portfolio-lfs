@@ -10,19 +10,24 @@ require "./PHPMailer/src/SMTP.php";
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
+    
+    // Get the raw POST data
+    $rawPostData = file_get_contents('php://input');
+    $postData = json_decode($rawPostData,true);
+
     // Validate form fields
-    $full_name = trim($_POST["fullname"]);
-    $email = trim($_POST["email"]);
-    $messageReceived = trim($_POST["message"]);
+    $full_name = trim($postData["fullname"]);
+    $email = trim($postData["email"]);
+    $messageReceived = trim($postData["message"]);
 
     if (empty($full_name) || empty($email) || empty($messageReceived)) {
-        echo json_encode(["success"=>false, "errorM"=>"Please complete all fields!"]);
+        echo json_encode(["success" => false, "errorM" => "Please complete all fields!"]);
         exit;
     }
     
     // Validate email address
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(["success"=>false, "errorM"=>"Invalid email address!"]);
+        echo json_encode(["success" => false, "errorM" => "Invalid email address!"]);
         exit;
     }
 
@@ -30,69 +35,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $to = 'ronke@ronkealukomusic.com';
     
     // Mail subject
-    $subject = "1 New Message From The Website (".$full_name.")";
+    $subject = "1 New Message From The Website (" . htmlspecialchars($full_name) . ")";
     
     // Mail message
-    $message_body = "Name: $full_name\n";
-    $message_body .= "Email: $email\n\n";
-    $message_body .= "Message:\n$messageReceived";
+    $message_body = "Name: " . htmlspecialchars($full_name) . "\n";
+    $message_body .= "Email: " . htmlspecialchars($email) . "\n\n";
+    $message_body .= "Message:\n" . htmlspecialchars($messageReceived);
     
     // Mail headers
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    $headers = "From: " . htmlspecialchars($email) . "\r\n";
+    $headers .= "Reply-To: " . htmlspecialchars($email) . "\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
-	
-	//Create an instance; passing `true` enables exceptions
-	$mail = new PHPMailer(true);
+    // Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
 
-	try {
-		//Server settings
-		// $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-		$mail->isSMTP();                                            //Send using SMTP
-		$mail->Host       = 'server259.web-hosting.com';                     //Set the SMTP server to send through
-		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username   = 'ronke@ronkealukomusic.com';                     //SMTP username
-		$mail->Password   = 'ronkealuko123$';                               //SMTP password
-		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-		$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    try {
+        // Server settings
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+        $mail->isSMTP();                                            // Send using SMTP
+        $mail->Host       = 'server259.web-hosting.com';             // Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = getenv('SMTP_USERNAME');                // SMTP username from environment variables
+        $mail->Password   = getenv('SMTP_PASSWORD');                // SMTP password from environment variables
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable implicit TLS encryption
+        $mail->Port       = 465;                                    // TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-		//Recipients
-		$mail->setFrom($email, $full_name);
-		$mail->addAddress($to, 'Ronke Aluko');     //Add a recipient
-		// $mail->addAddress('ellen@example.com');               //Name is optional
-		$mail->addReplyTo($email, $full_name);
-		// $mail->addCC('cc@example.com');
-		// $mail->addBCC('bcc@example.com');
+        // Recipients
+        $mail->setFrom($email, $full_name);
+        $mail->addAddress($to, 'Ronke Aluko');     // Add a recipient
+        $mail->addReplyTo($email, $full_name);
 
-		//Attachments
-		// $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-		// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-		//Content
-		$mail->isHTML(true);                                  //Set email format to HTML
-		$mail->Subject = $subject;
-		$mail->Body    = '
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = '
         <!DOCTYPE html>
         <html>
         <body>
         <div>
         <b>Message from the website</b><br> 
-        <b>Name</b>: '.$full_name.'<br>
-        <b>Email</b>: '.$email.'<br>
-        <b>Message</b>: '.$messageReceived.'
+        <b>Name</b>: ' . htmlspecialchars($full_name) . '<br>
+        <b>Email</b>: ' . htmlspecialchars($email) . '<br>
+        <b>Message</b>: ' . htmlspecialchars($messageReceived) . '
         </div>
         </body>
         </html>
         ';
-		// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-		$mail->send();
-		echo json_encode(["success" => true]);
+        $mail->send();
+        echo json_encode(["success" => true]);
         exit;
-	} catch (Exception $e) {
-		// echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        echo json_encode(["success" => false,"errorM"=>$mail->ErrorInfo]);
+    } catch (Exception $e) {
+        echo json_encode(["success" => false, "errorM" => "Message could not be sent. Mailer Error: " . $mail->ErrorInfo]);
         exit;
-	}
+    }
 }
+?>
