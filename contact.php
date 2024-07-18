@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port       = 465;                                    // TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         // Recipients
-        $mail->setFrom($email, $full_name);
+        $mail->setFrom('ronke@ronkealukomusic.com', 'Website Contact Form');
         $mail->addAddress($to, 'Ronke Aluko');     // Add a recipient
         $mail->addReplyTo($email, $full_name);
 
