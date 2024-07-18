@@ -5,7 +5,7 @@ const blogs = [
         description: "This is blog 1",
         author: "Author 1",
         date: "June 24, 2024",
-        image: "https://res.cloudinary.com/dltvs77fa/image/upload/v1719200388/1576075999982_cer6gv.jpg",
+        image: "https://res.cloudinary.com/dltvs77fa/image/upload/v1721273032/IMG-20240717-WA0072_dx0mro.jpg",
         category: "Medley",
         contentPreview: `Get ready to be blown away by Ronke Aluko's incredible Gospel Medley performed on the digital xylophone! Filmed right here in Lagos' largest studio, this video is a testament to the city's vibrant music scene. Ronke's creativity knows no bounds as she seamlessly weaves together classic gosp...`,
         content: `Get ready to be blown away by Ronke Aluko's incredible Gospel Medley performed on the digital xylophone! Filmed right here in Lagos' largest studio, this video is a testament to the city's vibrant music scene. Ronke's creativity knows no bounds as she seamlessly weaves together classic gospel tunes with innovative digital melodies.

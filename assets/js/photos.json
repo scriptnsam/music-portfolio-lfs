@@ -5,19 +5,15 @@
     },
     {
         "id":1,
-        "uri":"./assets/photos/2.jpg"
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1721273032/IMG-20240717-WA0069_f9kdew.jpg"
     },
     {
         "id":2,
-        "uri":"./assets/photos/3.jpg"
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1721273032/IMG-20240717-WA0070_quppom.jpg"
     },
     {
         "id":3,
-        "uri":"./assets/photos/4.jpg"
-    },
-    {
-        "id":4,
-        "uri":"./assets/photos/5.jpg"
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1721273032/IMG-20240717-WA0072_dx0mro.jpg"
     },
     {
         "id":5,
@@ -41,58 +37,18 @@
     },
     {
         "id":10,
-        "uri":"./assets/photos/11.jpg"
+        "uri":"./assets/photos/3.jpg"
     },
     {
         "id":11,
-        "uri":"./assets/photos/12.jpg"
-    },
-    {
-        "id":12,
-        "uri":"./assets/photos/13.jpg"
-    },
-    {
-        "id":13,
-        "uri":"./assets/photos/14.jpg"
-    },
-    {
-        "id":14,
-        "uri":"./assets/photos/15.jpg"
-    },
-    {
-        "id":15,
         "uri":"./assets/photos/16.jpg"
     },
     {
-        "id":16,
-        "uri":"./assets/photos/17.jpg"
-    },
-    {
-        "id":17,
-        "uri":"./assets/photos/18.jpg"
-    },
-    {
-        "id":18,
-        "uri":"./assets/photos/19.jpg"
-    },
-    {
-        "id":19,
-        "uri":"./assets/photos/20.jpg"
-    },
-    {
-        "id":20,
-        "uri":"./assets/photos/21.jpg"
-    },
-    {
-        "id":21,
-        "uri":"./assets/photos/22.jpg"
-    },
-    {
-        "id":22,
+        "id":12,
         "uri":"./assets/photos/23.jpg"
     },
     {
-        "id":23,
+        "id":13,
         "uri":"./assets/photos/24.jpg"
     }
 ]
