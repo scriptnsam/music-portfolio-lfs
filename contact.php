@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();                                            // Send using SMTP
         $mail->Host       = 'server259.web-hosting.com';             // Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'ronke@ronkealuko.com';                // SMTP username from environment variables
+        $mail->Username   = 'ronke@ronkealukomusic.com';                // SMTP username from environment variables
         $mail->Password   = 'ronkealuko123$';                // SMTP password from environment variables
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable implicit TLS encryption
         $mail->Port       = 465;                                    // TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
