@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
         videoContainer.innerHTML += `
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
             <div class="gallery-item">
-                <iframe width="100%" height="315" src="${video.uri}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="315" src="${video.uri}?autoplay=0" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         `
