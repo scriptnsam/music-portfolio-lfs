@@ -22,7 +22,7 @@ const blogs = [
         date: "September 24, 2024",
         image: "https://res.cloudinary.com/dltvs77fa/image/upload/v1727233507/live_worshy_nsmomg.jpg",
         category: "Banner",
-        contentPreview: `Live Worhip Event...`,
+        contentPreview: `Live Worship Event...`,
         content: `...`
     }
 ];

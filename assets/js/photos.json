@@ -50,5 +50,17 @@
     {
         "id":13,
         "uri":"./assets/photos/24.jpg"
+    },
+    {
+        "id":14,
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1727635567/Copy_of_Motion_with_talking_drum_wibqxn.jpg"
+    },
+    {
+        "id":15,
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1727635568/Copy_of_White_student_3_tl9w8g.jpg"
+    },
+    {
+        "id":16,
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1727635569/Copy_of_White_student_1_zfgtrj.jpg"
     }
 ]
