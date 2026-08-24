@@ -25,4 +25,4 @@ const blogs = [
         contentPreview: `Live Worship Event...`,
         content: `...`
     }
-];
+].sort((firstBlog, secondBlog) => new Date(secondBlog.date) - new Date(firstBlog.date));

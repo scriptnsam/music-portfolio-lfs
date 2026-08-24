@@ -330,8 +330,8 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-  const videoContainer = document.getElementById("gallery");
-  const videosLoadingSign = document.getElementById("photos-loading-sign");
+  const videoContainer = document.getElementById("education-evidence");
+  const videosLoadingSign = document.getElementById("education-loading-sign");
   setTimeout(() => {
     if (videos.length !== 0) {
       videos.forEach((video, i) => {
