@@ -24,5 +24,27 @@ const blogs = [
         category: "Banner",
         contentPreview: `Live Worship Event...`,
         content: `...`
+    },
+    {
+        id: 3,
+        title: "Live Event Flyer Update",
+        description: "Live Event Promotion",
+        author: "Ronke Aluko",
+        date: "August 6, 2024",
+        image: "https://res.cloudinary.com/dltvs77fa/image/upload/v1786184067/Photo_from_alukokate_esfgmm.jpg",
+        category: "Live Event",
+        contentPreview: `Join us for an incredible live worship experience featuring Ronke Aluko and friends. Be part of this amazing evening of music, ministry and fellowship.`,
+        content: `Join us for an incredible live worship experience featuring Ronke Aluko and friends. This is a must-attend event for all music lovers and those seeking an uplifting spiritual experience. Be part of this amazing evening of music, ministry and fellowship.`
+    },
+    {
+        id: 4,
+        title: "Live Event Announcement",
+        description: "Live Event Promotion",
+        author: "Ronke Aluko",
+        date: "August 5, 2024",
+        image: "https://res.cloudinary.com/dltvs77fa/image/upload/v1786184065/Photo_from_alukokate_hrrmec.jpg",
+        category: "Live Event",
+        contentPreview: `Exciting announcement! Ronke Aluko is hosting a live worship event. Don't miss this opportunity to experience amazing music and ministry.`,
+        content: `Exciting announcement! Ronke Aluko is hosting a live worship event. Don't miss this opportunity to experience amazing music and ministry with talented musicians and friends.`
     }
 ].sort((firstBlog, secondBlog) => new Date(secondBlog.date) - new Date(firstBlog.date));

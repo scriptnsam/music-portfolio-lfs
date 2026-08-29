@@ -175,12 +175,30 @@ function musicDetailOpen() {
           const songUriContainer = document.getElementById("music-song-uri");
           const songLyricsContainer = document.getElementById("music-song-lyrics");
           const audioElement = document.getElementById("audio");
+          const audioPlayerContainer = document.getElementById("audio-player-container");
+          const pdfViewerContainer = document.getElementById("pdf-viewer-container");
+          const pdfViewer = document.getElementById("pdf-viewer");
+          const pdfDownloadBtn = document.getElementById("pdf-download-btn");
 
+          const uri = jsonSong[j].uri;
+          const isPDF = uri.toLowerCase().endsWith('.pdf');
 
           songTitleContainer.innerHTML = jsonSong[j].title;
-          songUriContainer.src = jsonSong[j].uri;
           songLyricsContainer.innerHTML = jsonSong[j].lyrics;
-          audioElement.load(); //loads the new uri into the audio player
+
+          if (isPDF) {
+            // Hide audio player, show PDF viewer
+            audioPlayerContainer.style.display = "none";
+            pdfViewerContainer.style.display = "block";
+            pdfViewer.src = uri;
+            pdfDownloadBtn.href = uri;
+          } else {
+            // Show audio player, hide PDF viewer
+            audioPlayerContainer.style.display = "block";
+            pdfViewerContainer.style.display = "none";
+            songUriContainer.src = uri;
+            audioElement.load(); //loads the new uri into the audio player
+          }
 
           for (let i = 0; i < pages.length; i++) {
             if (pages[i].dataset.page === "music-detail") {

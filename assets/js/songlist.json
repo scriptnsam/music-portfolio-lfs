@@ -14,5 +14,13 @@
         "uri":"./assets/musics/Ronke-Aluko-Gbemisoke_085957.mp3",
         "lyrics":"<h2>Gbemisoke</h2>",
         "image":"./assets/covers/cover3.jpg"
+    },
+    {
+        "id":2,
+        "title":"EBE MI",
+        "artist":"Ronke Aluko",
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1787559778/EBE_MI_sheet_music_wqb5qu.pdf",
+        "lyrics":"<h2>EBE MI - Sheet Music</h2><p>Digital sheet music for EBE MI by Ronke Aluko</p>",
+        "image":"./assets/covers/cover1.jpg"
     }
 ]

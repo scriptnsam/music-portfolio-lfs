@@ -269,7 +269,7 @@
                     </div> -->
                 </div>
                 <div class="carousel-item">
-                  <img src="https://res.cloudinary.com/dltvs77fa/image/upload/v1727635567/Copy_of_Motion_with_talking_drum_wibqxn.jpg" class="d-block w-100" alt="Ronke Aluko playing talking drum">
+                  <img src="https://res.cloudinary.com/dltvs77fa/image/upload/v1786184061/IMG-20260721-WA0062_ayblri.jpg" class="d-block w-100" alt="Ronke Aluko playing talking drum">
                     <!-- <div class="carousel-caption d-none d-md-block">
                         <h5>Caption for Slide 3</h5>
                     </div> -->
@@ -973,7 +973,9 @@
           <header>
             <h2 class="h2 article-title" id="music-song-title">No title</h2>
           </header>
-           <div class="audio-player">
+          
+          <div id="music-content-container">
+            <div id="audio-player-container" class="audio-player">
                 <audio id="audio" controls>
                     <source src="" type="audio/mpeg" id="music-song-uri">
                     Your browser does not support the audio element.
@@ -988,6 +990,12 @@
                     <input type="range" id="volumeSlider" max="100" value="100">
                 </div>
             </div>
+            
+            <div id="pdf-viewer-container" style="display: none; margin: 20px 0;">
+              <iframe id="pdf-viewer" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 8px;" frameborder="0"></iframe>
+              <a id="pdf-download-btn" href="" target="_blank" download style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #4070f4; color: white; text-decoration: none; border-radius: 5px; font-weight: 600;">Download PDF</a>
+            </div>
+          </div>
 
           <div class="music-lyrics">
             <h3 class="h3 skills-title">Lyrics</h3>
