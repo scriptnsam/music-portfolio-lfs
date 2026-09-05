@@ -303,6 +303,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const photos = [];
 
+const isVideo = (uri) => /\.(mp4|webm|ogg)(?:[?#]|$)/i.test(uri);
+
+const mediaMarkup = (media, index) => {
+  if (isVideo(media.uri)) {
+    return `<video controls width="100%" height="315" src="${media.uri}" title="YouTube video player" frameborder="0" allow="fullscreen; encrypted-media; picture-in-picture"></video>`;
+  }
+
+  return `<img src="${media.uri}" class="img-fluid" alt="Gallery Image ${index + 1}">`;
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch('./assets/js/photos.json')
@@ -323,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
         photoContainer.innerHTML += `
                <div class="col-lg-4 col-md-6 col-sm-12 mb-4" onclick="popUpWindow(event)">
                     <div class="gallery-item">
-                        <img src="${photo.uri}" class="img-fluid" alt="Gallery Image ${i + 1}">
+                        ${mediaMarkup(photo, i)}
                     </div>
                 </div>
         `
@@ -357,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
         videoContainer.innerHTML += `
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
             <div class="gallery-item">
-                <video controls width="100%" height="315" src="${video.uri}" title="YouTube video player" frameborder="0" allow="fullscreen; encrypted-media; picture-in-picture"></video>
+                ${mediaMarkup(video, i)}
             </div>
         </div>
         `
@@ -413,6 +423,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const popUpWindow = (e) => {
+  if (e.target.tagName !== 'IMG') return;
+
   const img = e.target.src;
   const imgAlt = e.target.alt;
   const popUpWindow = document.getElementById('pop_up_window');
