@@ -1,0 +1,16 @@
+name: Auto Renew SSL Certificate
+
+on:
+  schedule:
+    # Runs automatically at 00:00 on the 1st of every second month
+    - cron: '0 0 1 */2 *'
+  workflow_dispatch: # Allows you to run it manually anytime
+
+jobs:
+  renew-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Let's Encrypt / ZeroSSL via cPanel API
+        run: |
+          curl -H "Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_API_TOKEN }}" \
+          "${{ secrets.CPANEL_URL }}/execute/AutoSSL/request_autossl_check"
