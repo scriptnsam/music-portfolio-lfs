@@ -1,7 +1,7 @@
 [
     {
         "id":0,
-        "uri":"./assets/photos/1.jpg"
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184063/Photo_from_alukokate_jagvih.jpg"
     },
     {
         "id":1,
@@ -57,7 +57,7 @@
     },
     {
         "id":15,
-        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1727635568/Copy_of_White_student_3_tl9w8g.jpg"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1786184073/Video_from_alukokate_timgzx.mp4"
     },
     {
         "id":16,
@@ -65,7 +65,7 @@
     },
     {
         "id":17,
-        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184058/Copy_of_Online_class_a4z27j.jpg"
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1786184070/Video_from_alukokate_w6iebr.mp4"
     },
     {
         "id":18,
@@ -84,10 +84,6 @@
         "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184061/IMG-20260721-WA0062_ayblri.jpg"
     },
     {
-        "id":22,
-        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184062/IMG_20260728_161654_wgkqg0.jpg"
-    },
-    {
         "id":23,
         "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184063/Photo_from_alukokate_wbxye1.jpg"
     },
@@ -100,11 +96,19 @@
         "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184069/Photo_from_Ronke_Aluko_z3dtya.jpg"
     },
     {
-        "id":26,
-        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184063/Photo_from_alukokate_jagvih.jpg"
-    },
-    {
         "id":27,
         "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184059/IMG-20260721-WA0021_dhpbe9.jpg"
+    },
+    {
+        "id":28,
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200392/Video_animation_of_Gbemisoke_wx4doo.mp4"
+    },
+    {
+        "id":29,
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200387/short_sunday_rehearsal_on_drums_xuerkc.mp4"
+    },
+    {
+        "id":2,
+        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200384/hot_praises_with_the_electric_xylophone_at_RCCG_powerlink_Lekki_phase_1_Lagos_oioqa8.mp4"
     }
 ]

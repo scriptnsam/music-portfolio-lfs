@@ -9,7 +9,7 @@
     },
     {
         "id":2,
-        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200384/hot_praises_with_the_electric_xylophone_at_RCCG_powerlink_Lekki_phase_1_Lagos_oioqa8.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184062/IMG_20260728_161654_wgkqg0.jpg"
     },
     {
         "id":3,
@@ -18,14 +18,6 @@
     {
         "id":4,
         "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200389/VID_35730105_201049_585_uojz6h.mp4"
-    },
-    {
-        "id":5,
-        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200392/Video_animation_of_Gbemisoke_wx4doo.mp4"
-    },
-    {
-        "id":6,
-        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1719200387/short_sunday_rehearsal_on_drums_xuerkc.mp4"
     },
     {
         "id":7,
@@ -40,11 +32,11 @@
         "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1727635582/Copy_of_Piano_student_frf5wi.mp4"
     },
     {
-        "id":10,
-        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1786184073/Video_from_alukokate_timgzx.mp4"
+        "id":"10",
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1727635568/Copy_of_White_student_3_tl9w8g.jpg"
     },
     {
         "id":11,
-        "uri":"https://res.cloudinary.com/dltvs77fa/video/upload/v1786184070/Video_from_alukokate_w6iebr.mp4"
+        "uri":"https://res.cloudinary.com/dltvs77fa/image/upload/v1786184058/Copy_of_Online_class_a4z27j.jpg"
     }
 ]
