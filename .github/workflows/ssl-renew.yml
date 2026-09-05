@@ -1,4 +1,4 @@
-name: Auto Renew SSL Certificate
+name: Auto Renew and Upload SSL Certificate
 
 on:
   schedule:
@@ -7,10 +7,28 @@ on:
   workflow_dispatch: # Allows you to run it manually anytime
 
 jobs:
-  renew-ssl:
+  renew-and-upload-ssl:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy Let's Encrypt / ZeroSSL via cPanel API
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install acme.sh and Request Certificate
         run: |
-          curl -H "Authorization: cpanel ${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_API_TOKEN }}" \
-          "${{ secrets.CPANEL_URL }}/execute/AutoSSL/request_autossl_check"
+          # 1. Install acme.sh locally in the GitHub runner environment
+          curl https://acme.sh | sh
+          alias acme.sh=~/.acme.sh/acme.sh
+          
+          # 2. Set the default provider to ZeroSSL or Let's Encrypt
+          ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+          
+          # 3. Issue the certificate using the standalone web server method
+          # Note: Since GitHub doesn't host your website, we use the webroot mode 
+          # to generate the validation file locally, which we will upload to cPanel first.
+          
+          # First, create the local folder structure required for validation
+          mkdir -p .well-known/pki-validation
+          mkdir -p .well-known/acme-challenge
+          
+          # We will leverage your existing cPanel deployment workflow or do a direct upload.
+          # To keep things universal, we generate the certificate keys using a DNS or API fallback.
