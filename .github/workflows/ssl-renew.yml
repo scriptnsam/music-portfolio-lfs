@@ -13,22 +13,104 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install acme.sh and Request Certificate
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-python-version: '3.x'
+
+      - name: Install Certbot and Requests
         run: |
-          # 1. Install acme.sh locally in the GitHub runner environment
-          curl https://acme.sh | sh
-          alias acme.sh=~/.acme.sh/acme.sh
+          pip install certbot requests
+
+      - name: Generate Certificate and Install via cPanel UAPI
+        env:
+          CPANEL_URL: ${{ secrets.CPANEL_URL }}
+          CPANEL_USERNAME: ${{ secrets.CPANEL_USERNAME }}
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+          DOMAIN_NAME: ${{ secrets.DOMAIN_NAME }}
+        run: |
+          python - << 'EOF'
+          import os
+          import sys
+          import time
+          import requests
+          import subprocess
+
+          # 1. Generate SSL keys using Certbot locally on the runner
+          print("Requesting challenge from Let's Encrypt...")
+          certbot_cmd = [
+              "certbot", "certonly",
+              "--manual",
+              "--preferred-challenges", "http",
+              "-d", os.environ['DOMAIN_NAME'],
+              "-d", f"www.{os.environ['DOMAIN_NAME']}",
+              "--config-dir", "./certbot/config",
+              "--work-dir", "./certbot/work",
+              "--logs-dir", "./certbot/logs",
+              "--email", f"admin@{os.environ['DOMAIN_NAME']}",
+              "--agree-tos",
+              "--no-eff-email",
+              "--manual-auth-hook", "./auth_hook.sh",
+              "--manual-cleanup-hook", "./cleanup_hook.sh"
+          ]
           
-          # 2. Set the default provider to ZeroSSL or Let's Encrypt
-          ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+          # Create placeholder validation hooks to run certbot cleanly via automated Python requests
+          with open("auth_hook.sh", "w") as f:
+              f.write('#!/bin/bash\npython uploader.py "$CERTBOT_TOKEN" "$CERTBOT_VALIDATION"\n')
+          subprocess.run(["chmod", "+x", "auth_hook.sh"])
           
-          # 3. Issue the certificate using the standalone web server method
-          # Note: Since GitHub doesn't host your website, we use the webroot mode 
-          # to generate the validation file locally, which we will upload to cPanel first.
-          
-          # First, create the local folder structure required for validation
-          mkdir -p .well-known/pki-validation
-          mkdir -p .well-known/acme-challenge
-          
-          # We will leverage your existing cPanel deployment workflow or do a direct upload.
-          # To keep things universal, we generate the certificate keys using a DNS or API fallback.
+          with open("cleanup_hook.sh", "w") as f:
+              f.write('#!/bin/bash\npython cleaner.py "$CERTBOT_TOKEN"\n')
+          subprocess.run(["chmod", "+x", "cleanup_hook.sh"])
+
+          # Create the background helper to automatically push validation tokens to cPanel root path
+          uploader_script = """
+          import sys, os, requests
+          token = sys.argv[1]
+          validation = sys.argv[2]
+          url = f"{os.environ['CPANEL_URL']}/execute/Fileman/upload_files"
+          headers = {"Authorization": f"cpanel {os.environ['CPANEL_USERNAME']}:{os.environ['CPANEL_API_TOKEN']}"}
+          # Create structural validation folders over UAPI
+          requests.post(f"{os.environ['CPANEL_URL']}/execute/Fileman/mkdir", headers=headers, data={'dir': 'public_html/.well-known', 'name': 'acme-challenge'})
+          # Upload HTTP challenge file
+          files = {'file-0': (token, validation)}
+          requests.post(url, headers=headers, data={'dir': 'public_html/.well-known/acme-challenge'}, files=files)
+          """
+          with open("uploader.py", "w") as f: f.write(uploader_script.strip())
+
+          cleaner_script = """
+          import sys, os, requests
+          token = sys.argv[1]
+          url = f"{os.environ['CPANEL_URL']}/execute/Fileman/fileop"
+          headers = {"Authorization": f"cpanel {os.environ['CPANEL_USERNAME']}:{os.environ['CPANEL_API_TOKEN']}"}
+          requests.post(url, headers=headers, data={'op': 'unlink', 'sourcefiles': f"public_html/.well-known/acme-challenge/{token}"})
+          """
+          with open("cleaner.py", "w") as f: f.write(cleaner_script.strip())
+
+          # Execute verification process
+          result = subprocess.run(certbot_cmd, capture_output=True, text=True)
+          if result.returncode != 0:
+              print("Certbot Error:", result.stderr)
+              sys.exit(1)
+
+          # 2. Read the newly generated certificates from local Certbot storage
+          domain = os.environ['DOMAIN_NAME']
+          with open(f"./certbot/config/live/{domain}/cert.pem", "r") as f: cert = f.read()
+          with open(f"./certbot/config/live/{domain}/privkey.pem", "r") as f: key = f.read()
+          with open(f"./certbot/config/live/{domain}/chain.pem", "r") as f: cabundle = f.read()
+
+          # 3. Direct API Call to push keys into cPanel SSL Storage
+          print("Uploading and installing SSL certificate directly to cPanel server...")
+          install_url = f"{os.environ['CPANEL_URL']}/execute/SSL/install_ssl"
+          headers = {
+              "Authorization": f"cpanel {os.environ['CPANEL_USERNAME']}:{os.environ['CPANEL_API_TOKEN']}"
+          }
+          payload = {
+              "domain": domain,
+              "cert": cert,
+              "key": key,
+              "cabundle": cabundle
+          }
+          response = requests.post(install_url, headers=headers, data=payload)
+          print("cPanel Server Response:", response.json())
+          EOF
